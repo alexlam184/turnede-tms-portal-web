@@ -78,7 +78,7 @@ const TaskHeader = () => {
           <button
             ref={trigger}
             onClick={() => setPopupOpen(!popupOpen)}
-            className="flex items-center gap-2 rounded bg-primary py-2 px-4.5 font-medium text-white hover:bg-opacity-80"
+            className="flex items-center gap-2 rounded bg-primary px-4.5 py-2 font-medium text-white hover:bg-opacity-80"
           >
             <svg
               className="fill-current"

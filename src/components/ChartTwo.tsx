@@ -101,7 +101,7 @@ const ChartTwo: React.FC = () => {
               <option value="">This Week</option>
               <option value="">Last Week</option>
             </select>
-            <span className="absolute top-1/2 right-3 z-10 -translate-y-1/2">
+            <span className="absolute right-3 top-1/2 z-10 -translate-y-1/2">
               <svg
                 width="10"
                 height="6"
@@ -126,7 +126,7 @@ const ChartTwo: React.FC = () => {
       </div>
 
       <div>
-        <div id="chartTwo" className="-ml-5 -mb-9">
+        <div id="chartTwo" className="-mb-9 -ml-5">
           <ReactApexChart
             options={options}
             series={state.series}
