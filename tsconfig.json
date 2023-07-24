@@ -6,9 +6,10 @@
     "skipLibCheck": true,
 
     /* Bundler mode */
-    // "moduleResolution": "bundler",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
     // "allowImportingTsExtensions": true,
-    // "resolveJsonModule": true,
+    "resolveJsonModule": true,
     // "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
@@ -16,8 +17,11 @@
     // "strict": true,
     // "noUnusedLocals": true,
     // "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "react": ["./node_modules/@types/react"]
+    }
   },
-  "include": ["src", "src/lib.d.ts"],
+  "include": ["src", "src/lib.d.ts", "src/**/*.json"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

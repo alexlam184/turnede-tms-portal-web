@@ -1,13 +1,19 @@
+import { useUser } from '@clerk/clerk-react';
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, redirect } from 'react-router-dom';
+
+import { SignOutButton, useClerk } from '@clerk/clerk-react';
 
 import UserOne from '../images/user/user-01.png';
+import React from 'react';
 
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const trigger = useRef<any>(null);
   const dropdown = useRef<any>(null);
+  const { user } = useUser();
+  const { signOut } = useClerk();
 
   // close on click outside
   useEffect(() => {
@@ -35,6 +41,9 @@ const DropdownUser = () => {
     return () => document.removeEventListener('keydown', keyHandler);
   });
 
+
+
+
   return (
     <div className="relative">
       <Link
@@ -45,13 +54,13 @@ const DropdownUser = () => {
       >
         <span className="hidden text-right lg:block">
           <span className="block text-sm font-medium text-black dark:text-white">
-            Thomas Anree
+            {user.username}
           </span>
-          <span className="block text-xs">UX Designer</span>
+          <span className="block text-xs">{user.id}</span>
         </span>
 
         <span className="h-12 w-12 rounded-full">
-          <img src={UserOne} alt="User" />
+          <img src={user.profileImageUrl} alt="User" />
         </span>
 
         <svg
@@ -155,7 +164,10 @@ const DropdownUser = () => {
             </Link>
           </li>
         </ul>
-        <button className="flex items-center gap-3.5 px-6 py-4 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base">
+        <button
+          className="flex items-center gap-3.5 px-6 py-4 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
+          onClick={() => signOut({})}
+        >
           <svg
             className="fill-current"
             width="22"
@@ -173,7 +185,7 @@ const DropdownUser = () => {
               fill=""
             />
           </svg>
-          Log Out
+          Log out
         </button>
       </div>
       {/* <!-- Dropdown End --> */}

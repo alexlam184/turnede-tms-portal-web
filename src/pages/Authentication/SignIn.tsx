@@ -1,8 +1,20 @@
-import { Link } from 'react-router-dom';
-import LogoDark from '../../images/logo/logo-dark.svg';
-import Logo from '../../images/logo/logo.svg';
+import { SignIn as ClerkSignIn, useUser } from '@clerk/clerk-react';
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import Logo from '../../images/logo/logo.png';
 
 const SignIn = () => {
+  const { isSignedIn, user } = useUser();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isSignedIn) {
+      console.log('login success');
+      navigate('/main');
+      window.location.reload();
+    }
+  }, [isSignedIn]);
+
   return (
     <>
       <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
@@ -10,8 +22,7 @@ const SignIn = () => {
           <div className="hidden w-full xl:block xl:w-1/2">
             <div className="px-26 py-17.5 text-center">
               <Link className="mb-5.5 inline-block" to="/">
-                <img className="hidden dark:block" src={Logo} alt="Logo" />
-                <img className="dark:hidden" src={LogoDark} alt="Logo" />
+                <img className="block w-1/2" src={Logo} alt="Logo" />
               </Link>
 
               <p className="2xl:px-20">
@@ -144,7 +155,7 @@ const SignIn = () => {
             </div>
           </div>
 
-          <div className="w-full border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2">
+          {/* <div className="w-full border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2">
             <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
               <span className="mb-1.5 block font-medium">Start for free</span>
               <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
@@ -273,7 +284,8 @@ const SignIn = () => {
                 </div>
               </form>
             </div>
-          </div>
+          </div> */}
+          <ClerkSignIn />
         </div>
       </div>
     </>
