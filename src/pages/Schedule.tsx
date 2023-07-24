@@ -8,8 +8,6 @@ import { useScheduleQuery } from '../util/ApiServices';
 const Schedule = () => {
   const { data, isSuccess } = useScheduleQuery();
 
-  console.log(data);
-
   const scheduleColumns = [
     {
       header: 'ID',
@@ -54,7 +52,7 @@ const Schedule = () => {
   ];
   return (
     <>
-      <Breadcrumb pageName="Course" />
+      <Breadcrumb pageName="Schedule" />
 
       <div className="overflow-hidden rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
         <div className="relative z-20 h-35 md:h-65">
@@ -64,7 +62,13 @@ const Schedule = () => {
             className="h-full w-full rounded-tl-sm rounded-tr-sm object-cover object-center"
           />
         </div>
-        {isSuccess && <BasicTable data={data} columns={scheduleColumns} />}
+        {isSuccess && (
+          <BasicTable
+            handleAdd={() => {}}
+            data={data}
+            columns={scheduleColumns}
+          />
+        )}
       </div>
     </>
   );

@@ -1,7 +1,7 @@
 import { SignIn as ClerkSignIn, useUser } from '@clerk/clerk-react';
 import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Logo from '../../images/logo/logo.png';
+import Logo from '../../images/logo/turned-e-logo-zh.png';
 
 const SignIn = () => {
   const { isSignedIn, user } = useUser();
@@ -21,14 +21,11 @@ const SignIn = () => {
         <div className="flex flex-wrap items-center">
           <div className="hidden w-full xl:block xl:w-1/2">
             <div className="px-26 py-17.5 text-center">
-              <Link className="mb-5.5 inline-block" to="/">
+              <Link className="mb-5.5  flex justify-center" to="/">
                 <img className="block w-1/2" src={Logo} alt="Logo" />
               </Link>
 
-              <p className="2xl:px-20">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                suspendisse.
-              </p>
+              <p className="2xl:px-20">Tutor managment system</p>
 
               <span className="mt-15 inline-block">
                 <svg

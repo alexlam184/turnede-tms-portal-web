@@ -10,7 +10,6 @@ import { useCourseQuery } from '../util/ApiServices';
 
 const Course = () => {
   const { data, isSuccess } = useCourseQuery();
-  console.log(data);
 
   const courseColumns = [
     {
@@ -54,7 +53,13 @@ const Course = () => {
             className="h-full w-full rounded-tl-sm rounded-tr-sm object-cover object-center"
           />
         </div>
-        {isSuccess && <BasicTable data={data} columns={courseColumns} />}
+        {isSuccess && (
+          <BasicTable
+            handleAdd={() => {}}
+            data={data}
+            columns={courseColumns}
+          />
+        )}
       </div>
     </>
   );

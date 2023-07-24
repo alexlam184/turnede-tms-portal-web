@@ -12,7 +12,8 @@ import {
 } from '@clerk/clerk-react';
 import PageNotFound from './pages/PageNotFound';
 import Schedule from './pages/Schedule';
-import Tutor from './pages/Tutor';
+import Tutor from './pages/Tutor/Tutor';
+import TutorAdd from './pages/Tutor/TutorAdd';
 
 const Calendar = lazy(() => import('./pages/Calendar'));
 const Chart = lazy(() => import('./pages/Chart'));
@@ -80,14 +81,24 @@ function App() {
                   </Suspense>
                 }
               />
-              <Route
-                path="/tutor"
-                element={
-                  <Suspense fallback={<Loader />}>
-                    <Tutor />
-                  </Suspense>
-                }
-              />
+              <Route path="/tutor">
+                <Route
+                  index
+                  element={
+                    <Suspense fallback={<Loader />}>
+                      <Tutor />
+                    </Suspense>
+                  }
+                />
+                <Route
+                  path="/tutor/tutor-add"
+                  element={
+                    <Suspense fallback={<Loader />}>
+                      <TutorAdd />
+                    </Suspense>
+                  }
+                />
+              </Route>
               <Route
                 path="/profile"
                 element={

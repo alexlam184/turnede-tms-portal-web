@@ -41,9 +41,6 @@ const DropdownUser = () => {
     return () => document.removeEventListener('keydown', keyHandler);
   });
 
-
-
-
   return (
     <div className="relative">
       <Link

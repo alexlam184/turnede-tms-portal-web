@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { useMemo } from 'react';
-import BasicTable from '../components/BasicTable';
-import Breadcrumb from '../components/Breadcrumb';
-import CoverOne from '../images/cover/cover-01.png';
-import { useTutorQuery } from '../util/ApiServices';
+import { useNavigate } from 'react-router-dom';
+import BasicTable from '../../components/BasicTable';
+import Breadcrumb from '../../components/Breadcrumb';
+import CoverOne from '../../images/cover/cover-01.png';
+import { useTutorQuery } from '../../util/ApiServices';
 
 const Tutor = () => {
   const { data, isSuccess } = useTutorQuery();
-
-  console.log(data);
+  const navigate = useNavigate();
 
   const tutorColumns = [
     {
@@ -50,7 +50,7 @@ const Tutor = () => {
   ];
   return (
     <>
-      <Breadcrumb pageName="Course" />
+      <Breadcrumb pageName="Tutor" />
 
       <div className="overflow-hidden rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
         <div className="relative z-20 h-35 md:h-65">
@@ -60,7 +60,15 @@ const Tutor = () => {
             className="h-full w-full rounded-tl-sm rounded-tr-sm object-cover object-center"
           />
         </div>
-        {isSuccess && <BasicTable data={data} columns={tutorColumns} />}
+        {isSuccess && (
+          <BasicTable
+            handleAdd={() => {
+              navigate('/tutor/tutor-add');
+            }}
+            data={data}
+            columns={tutorColumns}
+          />
+        )}
       </div>
     </>
   );
